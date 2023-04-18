@@ -1,11 +1,10 @@
 #include "Game.h"
 
 
-float rectW = 20.0f;
-float rectH = 120.0f;
-
 int main()
 {
+    //Initialize srand
+    std::srand(static_cast<unsigned>(time(NULL)));
 
     Game gameobj;
 
@@ -18,11 +17,6 @@ int main()
         //Render
         gameobj.render();
 
-
-
-
-
     }
-
     return 0;
 }

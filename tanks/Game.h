@@ -1,4 +1,9 @@
 #pragma once
+
+#include <iostream>
+#include <vector>
+#include <ctime>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
@@ -19,9 +24,21 @@ private:
 	sf::VideoMode videoMode;
 	sf::Event ev;
 
+	//Game logic
+	int points;
+	float enemySpawnTimer;
+	float enemySpawnTimerMax;
+	int maxEnemies;
+
+	//Game objects
+	std::vector<sf::RectangleShape> enemies;
+	sf::RectangleShape enemy;
+
+
 	//private functions
 	void initVariables();
 	void initWindow();
+	void initEnemies();
 
 
 public:
@@ -33,8 +50,12 @@ public:
 	const bool getWindowIsOpen() const;
 
 	//functions
+	void spawnEnemy();
+
 	void updatePollEvents();
+	void updateEnemies();
 	void update();
+	void renderEnemies();
 	void render();
 
 
