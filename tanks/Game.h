@@ -1,44 +1,31 @@
 #pragma once
 
-#include <iostream>
-#include <vector>
-#include <ctime>
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
+#include <map>
+#include "Player.h"
+#include "Bullet.h"
 /*
 Game engine class
 */
-
 
 class Game
 
 {
 private:
-
-	//private variables
+	//Window
 	sf::RenderWindow* window;
-	sf::VideoMode videoMode;
-	sf::Event ev;
 
-	//Game logic
-	int points;
-	float enemySpawnTimer;
-	float enemySpawnTimerMax;
-	int maxEnemies;
+	//Resources
+	std::map<std::string, sf::Texture*> textures;
+	std::vector<Bullet*> bullets;
 
-	//Game objects
-	std::vector<sf::RectangleShape> enemies;
-	sf::RectangleShape enemy;
+	//Player
+	Player* playerClassPointer;//maybe rename this
 
+	//Private functions
+	void initializeWindow();
+	void initTextures();
 
-	//private functions
-	void initVariables();
-	void initWindow();
-	void initEnemies();
+	void initializePlayer();
 
 
 public:
@@ -46,19 +33,15 @@ public:
 	Game();
 	virtual ~Game();
 
-	//Accessors
-	const bool getWindowIsOpen() const;
+	//Functions
+	void run();
 
-	//functions
-	void spawnEnemy();
 
 	void updatePollEvents();
-	void updateEnemies();
+	void updateInput();
+	void updateBullets();
 	void update();
-	void renderEnemies();
 	void render();
-
-
 
 };
 

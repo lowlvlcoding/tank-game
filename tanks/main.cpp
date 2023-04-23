@@ -3,20 +3,11 @@
 
 int main()
 {
-    //Initialize srand
-    std::srand(static_cast<unsigned>(time(NULL)));
 
+    //game object to run the game
     Game gameobj;
 
-    while (gameobj.getWindowIsOpen())
-    {
+    gameobj.run();
 
-        //Update
-        gameobj.update();
-
-        //Render
-        gameobj.render();
-
-    }
     return 0;
 }
